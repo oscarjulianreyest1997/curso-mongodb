@@ -1,0 +1,28 @@
+use("sample_training")
+
+//$set
+
+//{
+//    $set: { //Con set no solo modificamos sino podemos crear nuevos atributos
+//        myAttr: "Hola"
+//    }
+//}
+
+//$rename
+// {
+//     $rename: { //Con rename podemos modificar el nombre de un atributo, no su valor sino el nombre del campo
+//         myAttr: "my_data"
+//     }
+// }
+
+
+db.zips.updateMany(
+    //query
+    {city: "CLEVELAND"},
+    //update => Operators
+    {
+        $unset: { //eliminar un atributo a todos los documentos que cumplen la condicion de tener ciudad de CLEVELAND
+            my_data: ""
+        }
+    }
+)

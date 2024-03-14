@@ -1,0 +1,16 @@
+use("sample_training")
+
+//db.zips.find({city: "CLEVELAND"}).count()
+//Asi encontramos los documentos con ciudad de Cleveland ahora hay que actualizar o sumarle 1000 a la ´poblacion de todos los documentos 
+
+
+db.zips.updateMany(
+    //query
+    {city: "CLEVELAND"},
+    //update => Operators
+    {
+        $inc: {
+            pop: 1000
+        }
+    }
+)

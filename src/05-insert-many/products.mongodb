@@ -1,0 +1,41 @@
+use("platzi_store")
+
+db.products.drop() //Elimina todos los documentos de una coleccion
+
+db.products.insertMany([
+    {
+        _id: 1,
+        name: "Product 1",
+        price: 100
+    },
+
+    {
+        _id: 2,
+        name: "Product 2",
+        price: 20
+    },
+
+    {
+        _id: 1, //Si como ejemplo coloco el _id 1 o 2 al momento de ejecutarlo lanzara error PERO CREARÁ LOS DOS PRIMEROS REGISTROS
+        name: "Product 3",
+        price: 120
+    },
+    {
+        _id: 4, //Si como ejemplo coloco el _id 1 o 2 al momento de ejecutarlo lanzara error PERO CREARÁ LOS DOS PRIMEROS REGISTROS
+        name: "Product 4",
+        price: 120
+    }],
+
+    //OJO
+    //Si existiera otro producto como el producto 4 con id unico no lo crearia porque al momento de colicionar por el _id duplicado no termina de
+    //Ejecutar o crear los demas documentos que seguirian
+    
+        //Para el caso anteriormente mencionado crearemos esto:
+    {
+        ordered: false
+    }   
+
+    
+) 
+
+db.products.find()

@@ -1,0 +1,39 @@
+use("platzi_store")
+
+//Es importante resaltar que solo debe existir un documento para cada dia de ahi la importancia del atributo date
+// db.iot.insertOne({
+//     sensor: "A001",
+//     date:"2022-01-03",
+//     readings: [1212]
+// })
+
+
+//---------------------------------------------------------------------------------------------------------------------------------
+//Llega la segunda lectura de ese mismo dia --> Asi que hay es que actualizar y no insertar - primero eliminamos
+// db.iot.updateOne({
+//     //Query de consulta
+//     sensor: "A001",
+//     date:"2022-01-03"
+// },{
+//     $pop:{ //Eliminamos primero
+//         readings: 1 //1 para el elemento tinal y -1 para el primer elemento
+//     }
+//     //Operacion a efecturar
+// })
+
+
+//---------------------------------------------------------------------------------------------------------------------------------
+//Luego agregamos
+db.iot.updateOne({
+    //Query de consulta
+    sensor: "A001",
+    date:"2022-01-03"
+}, {
+    $push: { //Agregar
+        readings: 2323 
+    }
+})
+
+//---------------------------------------------------------------------------------------------------------------------------------
+//Ahora necesito saber si es un registro nuevo del dia o no
+//Archivo upsert.mongodb

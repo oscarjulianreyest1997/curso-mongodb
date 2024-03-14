@@ -1,0 +1,15 @@
+use("platzi_store")
+
+
+db.iot.updateOne({
+    //Query de consulta
+    sensor: "A001",
+    date:"2022-01-04" //Un nuevo dia 
+}, {
+    $push: { //Agregar
+        readings: 123434 //Nueva lectura
+    }
+},{
+    upsert: true //especifica que si no se encuentra ningún documento que coincida con el filtro, 
+    //se creará uno nuevo con los campos especificados en la actualización
+})

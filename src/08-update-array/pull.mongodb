@@ -1,0 +1,19 @@
+use("platzi_store")
+
+//Queremos quitar en todos los arrays de tags de los productos el tag book
+// db.inventory.updateMany({}, { //{}, trae todos los documentos
+//     //Operador
+//     $pull:{ //Eliminar elemenos en un Array
+//         tags: "book" //Estariamos quitando el tag book en todos los arrays de los productos
+//     }
+// })
+
+//quitar en todos los arrays varios tags
+db.inventory.updateMany({}, { //{}, trae todos los documentos
+    //Operador
+    $pull:{ //Eliminar varios elementos en todos los Arrays de tags
+        tags:{
+            $in: ["appliance", "school"]
+        }
+    }
+})

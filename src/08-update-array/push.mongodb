@@ -1,0 +1,9 @@
+use("platzi_store")
+
+db.inventory.updateOne({_id: 4}, {
+    //Operador
+    $push:{
+        tags: "headphone" //Estariamos agregando un nuevo tag en el array de tags para el producto con _id=4
+    }
+})
+

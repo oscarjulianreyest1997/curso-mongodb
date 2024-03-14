@@ -1,0 +1,13 @@
+use("platzi_store")
+
+db.products.updateOne(
+    //query
+    {_id: 2},
+    //change => operators
+    {
+        $inc: { //Se usa para actualizar un atributo de tipo numerico, para este ejemplo el atributo precio es el unico valor numerico
+            price: 100, //Para este caso estamos incrementando 100 al precio del producto con _id=2
+        }
+    }
+    
+    )

@@ -1,0 +1,4 @@
+use("sample_training")
+
+//Usamos la base de datos zips y contamos los registros 
+db.zips.find({city: "CLEVELAND"})

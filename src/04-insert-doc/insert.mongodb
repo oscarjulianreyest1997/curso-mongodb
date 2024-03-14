@@ -1,0 +1,14 @@
+use("platzi_store") //Si no existe en la base de datos en Atlas la crea por default
+
+db.products.insertOne({
+    _id: 1, //Podemos crear los id nosotros mismos pero estaria bajo nuestra responsabilidad
+//En este caso estre producto solo se crearia una unica vez dado que al volver a crearlo no lo permitiria porque ya hay un producto con este id
+    name: "Porduct 1",
+    price: 1000
+})
+
+db.products.insertOne({
+    _id: 2,
+    name: "Porduct 2",
+    price: 100
+}) //El output solo es de la ultima instrucción pero si guardo ambos registros

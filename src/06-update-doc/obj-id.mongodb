@@ -1,0 +1,12 @@
+use("platzi_store")
+
+db.products.updateOne(
+    //query
+    //No se puede buscar el id generado por mongo como: {_id: "65f311e11646abc2f7bd5f95"}, es necesrio usar ObjectID("...")
+    {_id: ObjectId("65f311e11646abc2f7bd5f95")}, 
+    //change => operators
+    {
+        $inc: {
+            price: 100,
+        }
+    })
