@@ -1,0 +1,28 @@
+use("sample_training")
+
+// db.routes.find({ airplane: "E70" })
+
+//Cuantos aviones han salido o aterrisado en el aeropuerto de bogotá
+// db.routes.find({
+//     $or: [
+//         {dst_airport: "BOG"},
+//         {src_airport: "BOG"},
+//     ]
+// }).count()
+
+
+//------------------------UNION-------------------------
+//Validamos si el avion anteriormente buscado ha aterrizado o despegado desde el aeropuerto de bogota
+
+//$and [{}, {}, {}]
+db.routes.find({
+    $and: [
+        { airplane: "E70" },
+        {
+            $or: [
+                {dst_airport: "BOG"},
+                {src_airport: "BOG"},
+            ] 
+        }
+    ]
+}).count()  

@@ -1,0 +1,20 @@
+use("sample_training")
+
+//Viajes que han iniciado en una estacion y regresaron a la misma estacion
+// db.trips.find({
+//     $expr: {
+//         $eq: ["$start station id", "$end station id"]
+//     }
+// }).count()
+
+
+//Viajes que empezaron y finalizaron en el mismo punto
+//y (and) ademas tuvieron una duracion de 1200 o mas  
+db.trips.find({
+    $expr: {
+        $and: [
+            { $eq: ["$start station id", "$end station id"] },
+            { $gte: ["$tripduration", 1200]}
+        ]
+    }
+}).count()

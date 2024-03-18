@@ -1,0 +1,37 @@
+use("sample_training")
+
+//.findOne() --> Primer elemento de la coleccion
+// db.trips.find({"start station location.type": "Point"})
+
+
+//buscar documentos dentro de la colección "companies" donde el apellido del primer 
+//elemento en el campo "relationships.person" sea "Zuckerberg".
+// db.companies.find({
+//     "relationships.0.person.last_name": "Zuckerberg"
+// }, {
+//     name: 1,
+//     relationships: 1
+// })
+
+
+//buscar documentos dentro de la colección "companies" donde el nombre del primer 
+//elemento en el campo "relationships.person" sea "Mark".
+// db.companies.find({
+//     "relationships.0.person.first_name": "Mark"
+// }, {
+//     name: 1,
+//     relationships: 1
+// }).count() //108
+
+//Al menos que este relacionada en alguna compañia
+
+db.companies.find({
+    relationships: {
+        $elemMatch:{
+            "person.first_name": "Mark"
+        }
+    }
+}, {
+    name: 1,
+    relationships: 1
+}).count() //523

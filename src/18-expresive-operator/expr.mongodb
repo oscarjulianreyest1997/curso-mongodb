@@ -1,0 +1,21 @@
+use("platzi_store")
+
+
+//Los spent mayores o iguales a 100
+// db.monthlyBudget.find({ spent : {$gte: 100}})
+
+// db.monthlyBudget.find({
+//     $expr: {
+//         $gte : ["$spent", 100] //Mayores o iguales
+//         //"$spent" para seleccionar un campo especifico en este caso spent
+//     }
+// })
+
+
+
+//Los documentos donde el spent superó al budget
+db.monthlyBudget.find({
+    $expr: {
+        $gte : ["$spent", "$budget"] 
+    }
+})

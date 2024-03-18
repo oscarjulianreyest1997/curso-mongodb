@@ -1,0 +1,60 @@
+use("sample_training")
+
+
+//AND implicito
+// db.inspections.find({
+//     sector: "Tax Preparers - 891",
+//     result: "Unable to Locate"
+// }).count()
+
+//AND explicito
+//$and [{}, {}, {}]
+// db.inspections.find({
+//     $and: [
+//         {sector: "Tax Preparers - 891"},
+//         {result: "Unable to Locate"}
+//     ]
+// }).count()
+
+//----------------------------------------------------------
+
+//OR
+//Uno u otro elemento
+//Diferentes atributos
+// db.inspections.find({
+//      $or: [
+//          {sector: "Tax Preparers - 891"},
+//          {result: "Unable to Locate"}
+//      ]
+//  }).count()
+
+//---------------------------------------------------------------
+ //NOR
+//No incluya ni uno ni otro
+//  db.inspections.find({
+//     $nor: [
+//         {sector: "Tax Preparers - 891"},
+//         {result: "Unable to Locate"}
+//     ]
+// })
+
+
+//Mostrar los documentos que no tienen el serctor ni el result especificados
+//y que solo me muestre ciertos campos
+// db.inspections.find({
+//     $nor: [
+//         {result: "Unable to Locate"},
+//         {result: "No Violation Issued"}
+//     ]
+// }, {
+//     result: 1,
+//     _id: 0
+// })
+
+
+//--------------------------------------------------------------------
+//NOT $nor = {} no recibe una lista sino directamente el objeto
+//Usando expresiones regulares
+db.inspections.find({
+    result: { $not: {$regex: /Unable to Locate/}}
+})
