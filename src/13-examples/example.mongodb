@@ -1,0 +1,12 @@
+use("platzi_store")
+
+db.iot.updateMany(
+    //queary
+    {sensor: "A001"}, //Solo para sensores A001
+    //update
+    {
+        $pull: {//quitar elemenentos en un ARRAY
+            readings: {$gte: 3 } //elementos que cumplan que sean mayores o igual a 3 dentro del array de lecturas
+        }
+    }
+)

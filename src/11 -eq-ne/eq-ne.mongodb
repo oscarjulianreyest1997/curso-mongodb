@@ -1,0 +1,14 @@
+use("platzi_store")
+
+//Using $eq
+//db.inventory.find({ qty: 20 }) //Ya viene implicito el operador $eq (equal)
+//db.inventory.find({ qty: { $eq: 20 }}) //Operador explicito que no trae lo mismo que la linea anterior
+
+//Busqueda por los subdocumentos presentes en el dataset prube como item{} que por dentro tiene name y code
+// db.inventory.find({"item.name": "ab" }) 
+// db.inventory.find({"item.code": "123" }) 
+//Es necesario encerraer en comillas dado que es una busqeuda en un subdocumentos
+
+//Using $ne
+db.inventory.find({ qty: {$ne: 20} }) //Todos los documentos que su qty no es 20
+

@@ -1,0 +1,24 @@
+use("platzi_store")
+
+//Buscamos en un subdocumentos item
+// db.inventory.find( { "item.description" : "Single line description." } )
+
+
+//Busqueda si cierta palabra esta en la descripción:
+//Expresiones regulares ("//")
+// db.inventory.find( { "item.description" : { $regex: /line/ } } )
+//buscamos los documentos en los que el subdocumento descripcion en el documento item contenga la palabra line
+
+
+//MONGODB No hace match si es mayuscula o minuscula pero hay una forma de que no sea sensible a esto (i):
+// db.inventory.find( { "item.description" : { $regex: /LINE/i } } )
+
+//Buscar los documentos que en su descripcion terminen en line, o sea que la contengan al final ($):
+// db.inventory.find( { "item.description" : { $regex: /line$/i } } )
+
+//Buscar los documentos que en su descripcion inicien en signle, o sea que la contengan al inicio (^):
+// db.inventory.find( { "item.description" : { $regex: /^single/i } } )
+
+//Descripciones que tienen santos de linea \n
+//Documentos que en la descripción de la segunda linea tiene la letra s (m) miltilinea:
+db.inventory.find( { "item.description" : { $regex: /^s/im } } )

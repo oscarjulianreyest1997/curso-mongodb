@@ -1,0 +1,8 @@
+use("sample_training")
+
+db.trips.find(
+    //query los viajes que sean mayores o iguales a 500
+    {tripduration: { $gte: 500}},
+    //projection solo para que me traiga los campos:
+    {tripulation: 1, usertype: 1}
+    )

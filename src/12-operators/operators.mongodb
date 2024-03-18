@@ -1,0 +1,51 @@
+use("platzi_store")
+
+
+//Using $gt (mayor que >) & $gte (mayor igual >=):
+
+// db.inventory.find({ qty: { $gt: 20 } }) 
+//Los documentos que en su campo qty sea mayor a 20 (excluye el 20)
+
+// db.inventory.find({ qty: { $gte: 20 } }) 
+//Los documentos que en su campo qty sea mayor igual a 20 (incluye  el 20)
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+//Using $lt (menor <) & $lte (menor igual <=)
+// db.inventory.find({ qty: { $lt: 20 } }) 
+//Los documentos que en su campo qty sean menor a 20 (excluye el 20)
+
+// db.inventory.find({ qty: { $lte: 20 } }) 
+//Los documentos que en su campo qty sean menor o igual a 20 (incluye el 20)
+
+//usando difernetes operadores
+//mayor igual a 20 pero menor igual a 25:
+// db.inventory.find( { qty: { $gte: 20, $lte: 25} } )
+
+
+//Dos condiciones
+//1. buscar los subdocumentos donde su item(documentos 1).name(documneto 1.1) sea ab
+//2. que sean mayor o igual a 20 y menor igual a 25 en su campo qty
+// db.inventory.find( {
+//     "item.name": "ab", 
+//     qty: { $gte: 20, $lte: 25} 
+// } )
+
+
+//Dos condiciones
+//1. buscar los subdocumentos donde su item(documentos 1).code(documneto 1.1) sea 123
+//2. que sean mayor o igual a 20 y menor igual a 25 en su campo qty
+// db.inventory.find( {
+//     "item.code": "123", 
+//     qty: { $gte: 20, $lte: 25} 
+// } )
+
+
+//Dos condiciones
+//1. buscar los subdocumentos donde su item(documentos 1).code(documneto 1.1) sea diferente o no igual a 123
+//2. que sean mayor o igual a 20 y menor igual a 25 en su campo qty
+// db.inventory.find( {
+//     "item.code": { $ne: "123"}, 
+//     qty: { $gte: 20, $lte: 25} 
+// } )
+
