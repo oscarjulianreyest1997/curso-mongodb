@@ -1,0 +1,28 @@
+use("sample_airbnb")
+
+// db.listingsAndReviews.find({
+//     amenities: "Wifi"
+// }, {
+//     price: 1,
+//     amenities: 1
+// })
+
+
+//Aggregation system
+
+//[], [], []
+// db.listingsAndReviews.aggregate([
+//     { $match: {amenities: "Wifi"} }, //find
+//     {$project: {address: 1}}, //project
+//     {$group: { _id: "$address.country" }} //la salida de la linea anterior es la entrada en esta
+//                 //En este caso la salida es la agrupacion de los paises que tienen habitaciones con wifi
+// ])
+
+
+
+db.listingsAndReviews.aggregate([
+    { $match: {amenities: "Wifi"} }, //find
+    {$project: {address: 1}}, //project
+    {$group: { _id: "$address.country" , count: { $sum: 1}} } 
+    //salida es la agrupacion por pais y la cantidad count: { $sum: 1} de sitios que tienen con wifi
+])

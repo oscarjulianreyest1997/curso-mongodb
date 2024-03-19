@@ -1,0 +1,20 @@
+use("platzi_store")
+
+// db.categories
+// .find()
+// .skip(0) //Sin saltos o salto 0
+// .limit(2) //dos de limite
+// //Primera pagina con los dos primeros documentos
+
+// db.categories
+// .find()
+// .skip(2) //Salto de 2
+// .limit(2) //dos de limite
+// //segunda pagina con los dos primeros documentos
+
+db.categories
+.find()
+.skip(9) //Salto de 9
+.limit(3) //3 de limite
+//ultima pagina con los tres primeros documentos
+//En este caso solo me mostraria el primer documento que es el 10 porque no hay mas documentos

@@ -1,0 +1,10 @@
+use("sample_training")
+
+// db.zips.find({ pop: { $gte: 100}})
+//buscar las documentos con poblacion (pop) mayores o igual a 100 sin un orden especifico
+
+db.zips.
+find({ pop: { $gte: 100}})
+.sort({ pop: -1}) //Orden ascendente 1=0 - 10, A-Z y (-1) descendente 10-1, Z-A
+//Una vez organizados se usa el limit
+.limit(2)//Solo los dos documentos con mayor densidad plobacional
